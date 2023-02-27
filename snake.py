@@ -1,9 +1,12 @@
+import sys
+import pygame
+
 class Snake():
     movement = {"n": (0, -1), "s": (0, 1), "e": (1, 0), "w": (-1, 0)} #! север, юг, запад, восток
 
-    def __init__(self):
-        self.facing = "n" #! текущее направление движения змеи
-        self.pos = [(15, 15), (16, 15), (17, 15)] #! клетки являющиеся частью змеи
+    def __init__(self, facing, pos):
+        self.facing = facing #! текущее направление движения змеи
+        self.pos = pos #! клетки являющиеся частью змеи
     
     def move(self): #! метод для движения змеии
         head = (self.pos[0][0] + self.movement[self.facing][0], self.pos[0][1] + self.movement[self.facing][1]) #! добавление или вычитание пиксель головы в соответствии с направлением движения

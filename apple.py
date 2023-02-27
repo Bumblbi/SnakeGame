@@ -7,5 +7,5 @@ class Apple():
         self.pos = pos
 
     def spawn(self, Snake):
-        allowed = [cell for cell in self.cells if cell not on snake.pos] #! проверка на нахождения змеи в клетке, что бы яблоко не появилось в змее
+        allowed = [cell for cell in self.cells if cell not in snake.pos] #! проверка на нахождения змеи в клетке, что бы яблоко не появилось в змее
         self.pos = random.choice(allowed) #! выбор одной случайной клетки на которой появится яблоко
