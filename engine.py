@@ -11,10 +11,15 @@ class Engine():
         self.tiles = [Tile((x, y)) for y in range(30) for x in range(30)] #! генерация списка с плитками
 
     def dir(self, direction): #! метод для смены направления движения змейки
+        if (self.snake.dir == "n" or self.snake.dir == "s") and (direction == "n" or direction == "s"): #! змея не сможет развернуться в себя же
+            return None
+        if (self.snake.dir == "e" or self.snake.dir == "w") and (direction == "e" or direction == "w"):
+            return None
         self.snake.dir = direction
         
     def update(self): #! метод для обновления возиции змеи
-        self.snake.move()
+        if self.snake.move(self.apple):
+            self.apple.spawn()
 
         for tile in self.tiles: #! проверка для наличия плитки в списки змеи(строка 5)
             if tile.id in self.snake.pos:
