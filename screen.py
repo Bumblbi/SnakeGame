@@ -27,4 +27,4 @@ while True:
 
     engine.render(screen)
     pygame.display.flip()
-    clock.tick(7) #! ФПС(скорость движения змейки)
+    clock.tick(8) #! ФПС(скорость движения змейки)

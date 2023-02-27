@@ -17,9 +17,9 @@ class Engine():
             return None
         self.snake.dir = direction
         
-    def update(self): #! метод для обновления возиции змеи
+    def update(self):
         if self.snake.move(self.apple):
-            self.apple.spawn()
+            self.apple.spawn(self.apple)
 
         for tile in self.tiles: #! проверка для наличия плитки в списки змеи(строка 5)
             if tile.id in self.snake.pos:
