@@ -11,11 +11,18 @@ class Engine():
         self.tiles = [Tile((x, y)) for y in range(30) for x in range(30)] #! генерация списка с плитками
 
     def dir(self, direction): #! метод для смены направления движения змейки
-        if (self.snake.dir == "n" or self.snake.dir == "s") and (direction == "n" or direction == "s"): #! змея не сможет развернуться в себя же
+        if self.snake.alternate != []: #! очередь смены направления
+            new_dir = self.snake.alternate[::-1][0]
+        else:
+            new_dir = self.snake.dir
+        
+        if (new_dir == "n" or new_dir == "s") and (direction == "n" or direction == "s"): #! змея не сможет развернуться в себя же
             return None
-        if (self.snake.dir == "e" or self.snake.dir == "w") and (direction == "e" or direction == "w"):
+        if (new_dir == "e" or new_dir == "w") and (direction == "e" or direction == "w"):
             return None
-        self.snake.dir = direction
+
+        if len(self.snake.alternate) < 2: #! запись кнопок в очередь
+            self.snake.alternate.append(direction)
         
     def update(self):
         if self.snake.move(self.apple):
@@ -23,7 +30,11 @@ class Engine():
 
         for tile in self.tiles: #! проверка для наличия плитки в списки змеи(строка 5)
             if tile.id in self.snake.pos:
-                tile.set_color((0, 255, 0))
+                if tile.id == self.snake.pos[0]:
+                    tile.set_color((51, 204, 0))
+                else:
+                    tile.set_color((0, 153, 0))
+
             elif tile.id == self.apple.pos:
                 tile.set_color((255, 0, 0))
             else:

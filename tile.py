@@ -8,7 +8,7 @@ class Tile(pygame.sprite.Sprite):
 
         self.surf = pygame.Surface((20, 20)) #! создание поверхности
         self.surf.fill(self.color) #! заливка поверхности
-        self.rect = self.surf.get_rect(topleft = (self.id[0] * 20, self.id[1] * 20))
+        self.rect = self.surf.get_rect(topleft = (self.id[0] * 20 - 3, self.id[1] * 20 - 3))
     
     def set_color(self, color): #! метод color для перекраски плиток
         self.color = color

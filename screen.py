@@ -5,6 +5,7 @@ from engine import Engine
 pygame.init()
 
 width, height = 600, 600
+
 screen = pygame.display.set_mode((width, height))
 
 clock = pygame.time.Clock()

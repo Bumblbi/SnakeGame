@@ -6,9 +6,13 @@ class Snake():
 
     def __init__(self, dir, pos):
         self.dir = dir #! текущее направление движения змеи
+        self.alternate = []
         self.pos = pos #! клетки являющиеся частью змеи
     
     def move(self, apple):
+        if self.alternate != []:
+            self.dir = self.alternate.pop(0)
+
         head = (self.pos[0][0] + self.movement[self.dir][0], self.pos[0][1] + self.movement[self.dir][1]) #! добавление или вычитание пиксель головы в соответствии с направлением движения
 
         if head in self.pos: #! проверка что змея не вышла за пределы поля
