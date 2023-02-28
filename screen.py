@@ -8,6 +8,9 @@ width, height = 600, 600
 
 screen = pygame.display.set_mode((width, height))
 
+ARIAL = pygame.font.SysFont("arial", 50)
+
+fps = 8
 clock = pygame.time.Clock()
 
 engine = Engine()
@@ -25,7 +28,13 @@ while True:
                 engine.dir("e")
             if event.key == pygame.K_a:
                 engine.dir("w")
+            if event.key == pygame.K_LSHIFT:
+                fps = 15
+
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LSHIFT:
+                fps = 8
 
     engine.render(screen)
     pygame.display.flip()
-    clock.tick(8) #! ФПС(скорость движения змейки)
+    clock.tick(fps) #! ФПС(скорость движения змейки)
