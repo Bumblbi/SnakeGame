@@ -29,7 +29,7 @@ while True:
             if event.key == pygame.K_a:
                 engine.dir("w")
             if event.key == pygame.K_LSHIFT:
-                fps = 15
+                fps = 18
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LSHIFT:
