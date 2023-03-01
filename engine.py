@@ -17,9 +17,9 @@ class Engine():
             new_dir = self.snake.dir
         
         if (new_dir == "n" or new_dir == "s") and (direction == "n" or direction == "s"): #! змея не сможет развернуться в себя же
-            return None
+            return False
         if (new_dir == "e" or new_dir == "w") and (direction == "e" or direction == "w"):
-            return None
+            return False
 
         if len(self.snake.alternate) < 2: #! запись кнопок в очередь
             self.snake.alternate.append(direction)
